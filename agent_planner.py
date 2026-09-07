@@ -1,7 +1,14 @@
+import sys
+import os
 import time
 import json
 import uuid
 import datetime
+
+ROOT_DIR = os.path.dirname(os.path.abspath(__file__))
+if ROOT_DIR not in sys.path:
+    sys.path.insert(0, ROOT_DIR)
+
 from memory import ShortTermMemory, LongTermMemory, AgentMemoryTrace
 from tools.patient_db_tool import search_patient_by_query, get_patient_by_id, summarize_patient_history
 from tools.doctor_schedule_tool import search_doctors, get_doctor_available_slots, book_appointment

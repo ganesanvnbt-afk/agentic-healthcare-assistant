@@ -1,8 +1,15 @@
-import streamlit as st
+import os
+import sys
 import pandas as pd
 import json
 import datetime
-import os
+
+# Ensure project root is in sys.path for Streamlit Cloud deployment module resolution
+ROOT_DIR = os.path.dirname(os.path.abspath(__file__))
+if ROOT_DIR not in sys.path:
+    sys.path.insert(0, ROOT_DIR)
+
+import streamlit as st
 
 # Page Config - Must be first Streamlit command
 st.set_page_config(
