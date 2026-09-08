@@ -44,7 +44,14 @@ class LongTermMemory:
 
     def get_patient_profile_summary(self, patient_info, records):
         """Format a rich patient context summary string."""
-        summary = f"Patient: {patient_info['name']} (ID: {patient_info['patient_id']}), {patient_info['age']} y/o {patient_info['gender']}.\n"
+        if not isinstance(patient_info, dict):
+            patient_info = {}
+        p_name = patient_info.get("name", "Unknown")
+        p_id = patient_info.get("patient_id", "Unknown")
+        p_age = patient_info.get("age", "Unknown")
+        p_gender = patient_info.get("gender", "Unknown")
+        
+        summary = f"Patient: {p_name} (ID: {p_id}), {p_age} y/o {p_gender}.\n"
         summary += f"Relation: {patient_info.get('relation', 'Self')}\n"
         summary += f"Primary Condition: {patient_info.get('primary_condition', 'N/A')}\n"
         summary += f"Allergies: {patient_info.get('allergies', 'None reported')}\n"
